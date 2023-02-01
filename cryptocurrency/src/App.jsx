@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios'
+import Coins from "./components/Coins";
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -9,6 +10,8 @@ function App() {
   useEffect(()=> {
     axios.get(url).then((response)=>{
       setCoins(response.data)
+      console.log(response)
+      console.log(response.data)
       console.log(response.data[0])
     }).catch((error)=>{
       console.log(error)
@@ -19,10 +22,12 @@ function App() {
 
 
   return (
-
     <>
+      <Coins coins={coins} />
     </>
   );
 }
 
 export default App;
+
+
